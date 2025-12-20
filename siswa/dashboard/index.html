@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Siswa - SmartEdu Inclusion</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../sidebar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">SmartEduInclusion</div>
+                <div class="logo-subtitle">Student Portal</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-book"></i>
+                            Modul Pembelajaran
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            Prestasi Saya
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-tasks"></i>
+                            Tugas
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <h1 class="header-title">Dashboard</h1>
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-name">Siswa</span>
+                        <span class="user-email">email@example.com</span>
+                    </div>
+                    <div class="user-avatar">
+                        S
+                    </div>
+                </div>
+            </header>
+
+            <!-- Content Wrapper -->
+            <div class="content-wrapper">
+                <!-- Stats Grid -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-book-open"></i>
+                            </div>
+                            <span class="stat-label">Jumlah Modul<br>Yang diikuti</span>
+                        </div>
+                        <div class="stat-value">3</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                            <span class="stat-label">Jumlah Modul<br>yang telah selesai</span>
+                        </div>
+                        <div class="stat-value">2</div>
+                    </div>
+
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="stat-label">Poin Terkumpul</span>
+                        </div>
+                        <div class="stat-value">25</div>
+                    </div>
+                </div>
+
+                <!-- Bottom Section: Activity & Tasks Side by Side -->
+                <div class="bottom-section">
+                    <!-- Activity Section -->
+                    <section class="activity-section">
+                        <h2 class="section-title">Aktivitas Terakhir</h2>
+                        <div class="activity-card" id="activityCard">
+                            <!-- Single activity will be loaded by JavaScript -->
+                        </div>
+                    </section>
+
+                    <!-- Tasks Section -->
+                    <section class="tasks-section">
+                        <h2 class="section-title">List Tugas Hari Ini</h2>
+                        <ul class="task-list" id="taskList">
+                            <!-- Tasks will be loaded by JavaScript -->
+                        </ul>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Data statis
+        const latestActivity = {
+            id: 1,
+            title: "Matematika",
+            description: "Lorem ipsum dolor sit amet et delectus",
+            image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop",
+            progress: 80
+        };
+
+        const tasks = [
+            { id: 1, title: "Menyelesaikan Latihan Matematika Bab 3", completed: false },
+            { id: 2, title: "Membaca Materi Bahasa Indonesia", completed: true },
+            { id: 3, title: "Mengerjakan Kuis IPA", completed: false },
+            { id: 4, title: "Menonton Video Pembelajaran Sejarah", completed: false },
+            { id: 5, title: "Diskusi Kelompok Projek Sains", completed: true }
+        ];
+
+        // Render Single Activity
+        function renderActivity() {
+            const container = document.getElementById('activityCard');
+            container.innerHTML = `
+                <div class="activity-image-wrapper">
+                    <img src="${latestActivity.image}" alt="${latestActivity.title}" class="activity-image">
+                </div>
+                <h3 class="activity-title">${latestActivity.title}</h3>
+                <p class="activity-desc">${latestActivity.description}</p>
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: ${latestActivity.progress}%"></div>
+                    </div>
+                    <span class="progress-text">${latestActivity.progress}%</span>
+                </div>
+                <button class="continue-btn">
+                    Lanjutkan
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+        }
+
+        // Render Tasks
+        function renderTasks() {
+            const container = document.getElementById('taskList');
+            container.innerHTML = tasks.map(task => `
+                <li class="task-item">
+                    <div class="task-checkbox ${task.completed ? 'checked' : ''}" onclick="toggleTask(${task.id})">
+                        ${task.completed ? '<i class="fas fa-check"></i>' : ''}
+                    </div>
+                    <span class="task-text ${task.completed ? 'completed' : ''}">${task.title}</span>
+                </li>
+            `).join('');
+        }
+
+        // Toggle Task
+        function toggleTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (task) {
+                task.completed = !task.completed;
+                renderTasks();
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderActivity();
+            renderTasks();
+        });
+    </script>
+</body>
+</html>
