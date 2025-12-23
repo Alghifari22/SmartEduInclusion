@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembelajaran Adaptif - SmartEdu</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="../sidebar.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">SmartEduInclusion</div>
+                <div class="logo-subtitle">Student Portal</div>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="../dashboard/index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link active">
+                            <i class="fas fa-book"></i>
+                            Modul Pembelajaran
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="fas fa-trophy"></i>
+                            Game
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="top-header">
+                <h1 class="header-title">Pembelajaran Adaptif</h1>
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-name">Siswa</span>
+                        <span class="user-email">email@example.com</span>
+                    </div>
+                    <div class="user-avatar">
+                        S
+                    </div>
+                </div>
+            </header>
+
+            <!-- Module List -->
+            <div id="pageModuleList" class="page">
+                <div class="module-grid" id="moduleGrid"></div>
+            </div>
+
+            <!-- Module Detail -->
+            <div id="pageModuleDetail" class="page hidden">
+                <div class="module-detail">
+                    <div class="module-detail-header">
+                        <h2 class="module-detail-title" id="detailTitle"></h2>
+                        <p class="module-detail-desc" id="detailDesc"></p>
+                    </div>
+
+                    <div class="module-sections" id="moduleSections"></div>
+
+                    <div class="action-buttons">
+                        <button class="btn btn-primary" onclick="startQuiz()">
+                            <i class="fas fa-play"></i>
+                            Mulai Latihan Soal
+                        </button>
+                        <button class="btn btn-secondary" onclick="showModuleList()">
+                            <i class="fas fa-arrow-left"></i>
+                            Kembali ke Daftar Modul
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quiz -->
+            <div id="pageQuiz" class="page hidden">
+                <div class="quiz-container">
+                    <div class="quiz-sidebar">
+                        <div class="quiz-sidebar-title">Navigasi Soal</div>
+                        <div class="question-nav" id="questionNav"></div>
+                    </div>
+
+                    <div class="quiz-content">
+                        <div class="quiz-header">
+                            <div class="quiz-title">Latihan Soal Modul <span id="quizModuleNumber"></span></div>
+                            <div class="timer">
+                                <i class="fas fa-clock"></i>
+                                <span id="timer">Waktu</span>
+                            </div>
+                        </div>
+
+                        <div class="question-card" id="questionCard">
+                            <!-- Loaded by JavaScript -->
+                        </div>
+
+                        <div class="quiz-actions">
+                            <button class="btn btn-secondary" onclick="previousQuestion()" id="btnPrevious">
+                                <i class="fas fa-chevron-left"></i>
+                                Sebelumnya
+                            </button>
+                            <button class="btn btn-primary" onclick="nextQuestion()" id="btnNext">
+                                Selanjutnya
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                            <button class="btn btn-primary hidden" onclick="finishQuiz()" id="btnFinish">
+                                <i class="fas fa-check"></i>
+                                Selesai
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Result -->
+            <div id="pageResult" class="page hidden">
+                <div class="result-container">
+                    <div class="result-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2 class="result-title">Ringkasan Hasil</h2>
+                    <div class="result-score" id="resultScore">0</div>
+
+                    <div class="result-details">
+                        <div class="result-detail-item">
+                            <div class="result-detail-label">Total Soal</div>
+                            <div class="result-detail-value" id="totalQuestions">0</div>
+                        </div>
+                        <div class="result-detail-item">
+                            <div class="result-detail-label">Jawaban Benar</div>
+                            <div class="result-detail-value" id="correctAnswers">0</div>
+                        </div>
+                        <div class="result-detail-item">
+                            <div class="result-detail-label">Jawaban Salah</div>
+                            <div class="result-detail-value" id="wrongAnswers">0</div>
+                        </div>
+                    </div>
+
+                    <div class="recommendation">
+                        <div class="recommendation-title">
+                            <i class="fas fa-lightbulb"></i>
+                            Rekomendasi untuk Kamu
+                        </div>
+                        <p class="recommendation-text" id="recommendationText"></p>
+                    </div>
+
+                    <div class="action-buttons" style="justify-content: center;">
+                        <button class="btn btn-primary" onclick="showModuleDetail()">
+                            <i class="fas fa-redo"></i>
+                            Ulangi Latihan
+                        </button>
+                        <button class="btn btn-secondary" onclick="showModuleList()">
+                            <i class="fas fa-home"></i>
+                            Kembali ke Beranda
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Data
+        const modules = [
+            {
+                id: 1,
+                title: "Modul 1: Pengenalan Matematika Dasar",
+                description: "Pelajari konsep dasar matematika mulai dari angka, operasi hitung, hingga pemahaman dasar aljabar",
+                image: "https://images.unsplash.com/photo-1509228468518-180dd4864904?w=400&h=300&fit=crop",
+                lessons: 5,
+                duration: "2 jam",
+                sections: [
+                    { title: "Pengenalan Angka", content: "Memahami konsep angka dan sistem bilangan yang digunakan dalam matematika dasar." },
+                    { title: "Operasi Hitung Dasar", content: "Mempelajari penjumlahan, pengurangan, perkalian, dan pembagian sebagai fondasi matematika." },
+                    { title: "Penerapan dalam Kehidupan", content: "Mengaplikasikan konsep matematika dasar dalam situasi kehidupan sehari-hari." }
+                ]
+            },
+            {
+                id: 2,
+                title: "Modul 2: Geometri dan Bangun Datar",
+                description: "Eksplorasi bentuk-bentuk geometri, sifat-sifatnya, dan cara menghitung luas serta keliling",
+                image: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=400&h=300&fit=crop",
+                lessons: 6,
+                duration: "2.5 jam",
+                sections: [
+                    { title: "Pengenalan Bangun Datar", content: "Mengenal berbagai jenis bangun datar seperti persegi, segitiga, lingkaran, dan lainnya." },
+                    { title: "Menghitung Luas dan Keliling", content: "Mempelajari rumus-rumus untuk menghitung luas dan keliling berbagai bangun datar." },
+                    { title: "Aplikasi Geometri", content: "Menggunakan konsep geometri dalam menyelesaikan masalah praktis." }
+                ]
+            },
+            {
+                id: 3,
+                title: "Modul 3: Aljabar Sederhana",
+                description: "Memahami variabel, persamaan linear, dan cara menyelesaikan masalah aljabar tingkat pemula",
+                image: "https://images.unsplash.com/photo-1596496050755-c923e73e42e1?w=400&h=300&fit=crop",
+                lessons: 7,
+                duration: "3 jam",
+                sections: [
+                    { title: "Konsep Variabel", content: "Memahami apa itu variabel dan bagaimana menggunakannya dalam persamaan matematika." },
+                    { title: "Persamaan Linear", content: "Mempelajari persamaan linear satu variabel dan cara menyelesaikannya." },
+                    { title: "Soal Cerita Aljabar", content: "Mengubah soal cerita menjadi persamaan aljabar dan menyelesaikannya." }
+                ]
+            }
+        ];
+
+        const questions = [
+            {
+                id: 1,
+                question: "Berapa hasil dari 15 + 23 × 2?",
+                options: ["A. 76", "B. 61", "C. 53", "D. 46"],
+                correct: 1
+            },
+            {
+                id: 2,
+                question: "Jika x + 5 = 12, maka nilai x adalah?",
+                options: ["A. 5", "B. 7", "C. 17", "D. 60"],
+                correct: 1
+            },
+            {
+                id: 3,
+                question: "Luas persegi dengan sisi 8 cm adalah?",
+                options: ["A. 32 cm²", "B. 64 cm²", "C. 16 cm²", "D. 48 cm²"],
+                correct: 1
+            },
+            {
+                id: 4,
+                question: "Hasil dari 100 ÷ 5 - 3 × 2 adalah?",
+                options: ["A. 14", "B. 10", "C. 34", "D. 26"],
+                correct: 0
+            },
+            {
+                id: 5,
+                question: "Keliling lingkaran dengan jari-jari 7 cm (π = 22/7) adalah?",
+                options: ["A. 22 cm", "B. 44 cm", "C. 154 cm", "D. 88 cm"],
+                correct: 1
+            }
+        ];
+
+        // Variable State
+        let currentModule = null;
+        let currentQuestion = 0;
+        let answers = [];
+        let startTime = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            renderModuleList();
+        });
+
+        // Render Module List
+        function renderModuleList() {
+            const container = document.getElementById('moduleGrid');
+            container.innerHTML = modules.map(module => `
+                <div class="module-card" onclick="showModuleDetail(${module.id})">
+                    <img src="${module.image}" alt="${module.title}" class="module-image">
+                    <div class="module-content">
+                        <h3 class="module-title">${module.title}</h3>
+                        <p class="module-desc">${module.description}</p>
+                        <div class="module-meta">
+                            <div class="module-meta-item">
+                                <i class="fas fa-book"></i>
+                                <span>${module.lessons} Pelajaran</span>
+                            </div>
+                            <div class="module-meta-item">
+                                <i class="fas fa-clock"></i>
+                                <span>${module.duration}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show Module Detail
+        function showModuleDetail(moduleId) {
+            if (moduleId) {
+                currentModule = modules.find(m => m.id === moduleId);
+            }
+
+            if (!currentModule) return;
+
+            document.getElementById('detailTitle').textContent = currentModule.title;
+            document.getElementById('detailDesc').textContent = currentModule.description;
+
+            const sectionsContainer = document.getElementById('moduleSections');
+            sectionsContainer.innerHTML = currentModule.sections.map(section => `
+                <div class="section-item">
+                    <div class="section-title">${section.title}</div>
+                    <div class="section-content">${section.content}</div>
+                </div>
+            `).join('');
+
+            showPage('pageModuleDetail', 'Detail Modul');
+        }
+
+        // Show Module List
+        function showModuleList() {
+            currentModule = null;
+            currentQuestion = 0;
+            answers = [];
+            showPage('pageModuleList', 'Pembelajaran Adaptif');
+        }
+
+        // Start Quiz
+        function startQuiz() {
+            currentQuestion = 0;
+            answers = new Array(questions.length).fill(null);
+            startTime = new Date();
+
+            document.getElementById('quizModuleNumber').textContent = currentModule.id;
+
+            renderQuestionNav();
+            renderQuestion();
+            startTimer();
+
+            showPage('pageQuiz', `Latihan Soal ${currentModule.title}`);
+        }
+
+        // Render Question Navigation
+        function renderQuestionNav() {
+            const container = document.getElementById('questionNav');
+            container.innerHTML = questions.map((q, index) => `
+                <div class="question-nav-item ${index === currentQuestion ? 'active' : ''} ${answers[index] !== null ? 'answered' : ''}" 
+                     onclick="goToQuestion(${index})">
+                    ${index + 1}
+                </div>
+            `).join('');
+        }
+
+        // Render Question
+        function renderQuestion() {
+            const question = questions[currentQuestion];
+            const container = document.getElementById('questionCard');
+
+            container.innerHTML = `
+                <div class="question-number">Soal ${currentQuestion + 1} dari ${questions.length}</div>
+                <div class="question-text">${question.question}</div>
+                <div class="question-image">
+                    <i class="fas fa-image"></i>
+                </div>
+                <div class="options-grid">
+                    ${question.options.map((option, index) => `
+                        <div class="option-item ${answers[currentQuestion] === index ? 'selected' : ''}" 
+                             onclick="selectAnswer(${index})">
+                            ${option}
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+
+            updateButtons();
+            renderQuestionNav();
+        }
+
+        // Select Answer
+        function selectAnswer(optionIndex) {
+            answers[currentQuestion] = optionIndex;
+            renderQuestion();
+        }
+
+        // Go to Question
+        function goToQuestion(index) {
+            currentQuestion = index;
+            renderQuestion();
+        }
+
+        // Previous Question
+        function previousQuestion() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderQuestion();
+            }
+        }
+
+        // Next Question
+        function nextQuestion() {
+            if (currentQuestion < questions.length - 1) {
+                currentQuestion++;
+                renderQuestion();
+            }
+        }
+
+        // Update Buttons
+        function updateButtons() {
+            const btnPrevious = document.getElementById('btnPrevious');
+            const btnNext = document.getElementById('btnNext');
+            const btnFinish = document.getElementById('btnFinish');
+
+            btnPrevious.classList.toggle('hidden', currentQuestion === 0);
+
+            if (currentQuestion === questions.length - 1) {
+                btnNext.classList.add('hidden');
+                btnFinish.classList.remove('hidden');
+            } else {
+                btnNext.classList.remove('hidden');
+                btnFinish.classList.add('hidden');
+            }
+        }
+
+        // Start Timer
+        function startTimer() {
+            const timerElement = document.getElementById('timer');
+            setInterval(() => {
+                const elapsed = Math.floor((new Date() - startTime) / 1000);
+                const minutes = Math.floor(elapsed / 60);
+                const seconds = elapsed % 60;
+                timerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            }, 1000);
+        }
+
+        // Finish Quiz
+        function finishQuiz() {
+            const correctCount = answers.filter((answer, index) => answer === questions[index].correct).length;
+            const wrongCount = questions.length - correctCount;
+            const score = Math.round((correctCount / questions.length) * 100);
+
+            document.getElementById('resultScore').textContent = score;
+            document.getElementById('totalQuestions').textContent = questions.length;
+            document.getElementById('correctAnswers').textContent = correctCount;
+            document.getElementById('wrongAnswers').textContent = wrongCount;
+
+            let recommendation = '';
+            if (score >= 80) {
+                recommendation = 'Kerja yang luar biasa! Kamu menunjukkan pemahaman yang sangat baik pada materi ini. Lanjutkan ke modul berikutnya untuk terus mengembangkan kemampuanmu.';
+            } else if (score >= 60) {
+                recommendation = 'Bagus! Kamu sudah memahami sebagian besar materi. Coba tinjau kembali beberapa konsep yang masih kurang dipahami untuk meningkatkan pemahamanmu.';
+            } else {
+                recommendation = 'Jangan berkecil hati! Belajar adalah proses. Disarankan untuk mengulang materi dan mencoba latihan soal lagi. Kamu pasti bisa!';
+            }
+
+            document.getElementById('recommendationText').textContent = recommendation;
+
+            showPage('pageResult', 'Hasil Latihan Soal');
+        }
+
+        // Show Page
+        function showPage(pageId, title) {
+            document.querySelectorAll('.page').forEach(page => page.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+            document.getElementById('pageTitle').textContent = title;
+        }
+
+        // Handle Back
+        function handleBack() {
+            const currentPage = Array.from(document.querySelectorAll('.page')).find(page => !page.classList.contains('hidden'));
+
+            if (currentPage.id === 'pageModuleDetail' || currentPage.id === 'pageResult') {
+                showModuleList();
+            } else if (currentPage.id === 'pageQuiz') {
+                if (confirm('Yakin ingin keluar dari latihan soal? Progress tidak akan tersimpan.')) {
+                    showModuleDetail();
+                }
+            }
+        }
+    </script>
+</body>
+</html>
