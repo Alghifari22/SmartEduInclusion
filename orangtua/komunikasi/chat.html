@@ -11,61 +11,101 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
 </head>
 
-<body class="dashboard-body">
-    <aside class="sidebar">
-        <div class="sidebar-logo">SmartEduInclusion</div>
+<body class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">SmartEduInclusion</div>
+            <div class="logo-subtitle">Parent Portal</div>
+        </div>
+
         <nav class="sidebar-nav">
-            <a href="../dashboard/index.html">Dashboard</a>
-            <a href="list.html" class="active">Komunikasi</a>
-            <a href="#">Perkembangan Anak</a>
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="../dashboard/index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../komunikasi/list.html" class="nav-link active">
+                        <i class="fas fa-comments"></i>
+                        Komunikasi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-seedling"></i>
+                        Perkembangan Anak
+                    </a>
+                </li>
+            </ul>
         </nav>
-        <button class="btn-logout">Logout</button>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
     </aside>
 
-    <main class="dashboard-content">
-        <header class="content-header">
-            <h2>Komunikasi Guru-Orang Tua</h2>
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <h1 class="header-title">Komunikasi Guru dan Orang Tua</h1>
             <div class="user-info">
-                <div class="user-text">
-                    <span>alvi@email.com</span>
-                    <small>Orang Tua</small>
+                <div class="user-details">
+                    <span class="user-name">Orang Tua</span>
+                    <span class="user-email">email@example.com</span>
                 </div>
-                <i class="fa-solid fa-circle-user user-icon"></i>
+                <div class="user-avatar">
+                    OT
+                </div>
             </div>
         </header>
 
-        <div class="chat-room-container">
-            <div class="room-header">
-                <div class="chat-avatar" style="width: 40px; height: 40px; margin: 0;">
-                    <i class="fa-solid fa-user"></i>
-                </div>
-                <div>
-                    <span class="chat-name">Ms. Liliana</span>
-                    <span class="teacher-role">Guru Fisika</span>
-                </div>
-            </div>
+        <div class="content-wrapper">
 
-            <div class="messages-area">
-                <div class="message-bubble msg-left">
-                    Selamat siang Ibu, saya ingin mengabarkan progres Alif.
+            <div class="chat-room-container">
+                <div class="room-header">
+                    <div class="chat-avatar" style="width: 40px; height: 40px; margin: 0;">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div>
+                        <span class="chat-name">Ms. Liliana</span>
+                        <span class="teacher-role">Guru Fisika</span>
+                    </div>
                 </div>
-
-                <div class="message-bubble msg-left">
-                    Nilai tugas fisikanya minggu ini sangat memuaskan, dia dapat nilai 90.
+    
+                <div class="messages-area">
+                    <div class="message-bubble msg-left">
+                        Selamat siang Ibu, saya ingin mengabarkan progres Alif.
+                    </div>
+    
+                    <div class="message-bubble msg-left">
+                        Nilai tugas fisikanya minggu ini sangat memuaskan, dia dapat nilai 90.
+                    </div>
+    
+                    <div class="message-bubble msg-right">
+                        Wah, alhamdulillah. Terima kasih informasinya Bu Liliana.
+                    </div>
                 </div>
-
-                <div class="message-bubble msg-right">
-                    Wah, alhamdulillah. Terima kasih informasinya Bu Liliana.
+    
+                <div class="input-area">
+                    <button class="btn-attach"><i class="fa-solid fa-paperclip"></i></button>
+                    <input type="text" class="input-field" placeholder="Ketik Pesan Anda">
+                    <button class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
                 </div>
-            </div>
-
-            <div class="input-area">
-                <button class="btn-attach"><i class="fa-solid fa-paperclip"></i></button>
-                <input type="text" class="input-field" placeholder="Ketik Pesan Anda">
-                <button class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
             </div>
         </div>
     </main>
-</body>
 
+    <script>
+        const btn = document.getElementById('logout-btn');
+        btn.addEventListener('click', function(){
+            window.location.href = "../../index.html";
+        });
+    </script>
+</body>
 </html>

@@ -44,7 +44,7 @@
 
             <div class="sidebar-footer">
                 <button class="logout-btn">
-                    <i class="fas fa-sign-out-alt"></i>
+                    <i class="fas fa-sign-out-alt" id="logout-btn"></i>
                     Logout
                 </button>
             </div>
@@ -180,6 +180,12 @@
     </div>
 
     <script>
+        // Logout Function
+        const btn = document.getElementById('logout-btn');
+        btn.addEventListener('click', function(){
+            window.location.href = "../../index.html";
+        });
+
         // Data
         const modules = [
             {

@@ -1,0 +1,150 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f0f9ff, #ffffff);
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 40px;
+    background: #ffffff;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.logo {
+    font-size: 20px;
+    font-weight: 700;
+    color: #2563eb;
+}
+
+.menu a {
+    margin: 0 14px;
+    text-decoration: none;
+    color: #0f172a;
+    font-weight: 500;
+}
+
+/* Login Button */
+.login-btn {
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 999px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #1e40af;
+}
+
+/* Modal Overlay */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+/* Modal Box */
+.modal-box {
+    width: 380px;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.25);
+    transform: scale(0.9);
+    transition: 0.3s ease;
+    position: relative;
+}
+
+/* Show modal */
+.modal-overlay.show {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.modal-overlay.show .modal-box {
+    transform: scale(1);
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 26px;
+    cursor: pointer;
+    color: #64748b;
+}
+
+/* Form */
+.modal-box h2 {
+    text-align: center;
+    color: #0f172a;
+}
+
+.subtitle {
+    text-align: center;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+.modal-box label {
+    font-size: 14px;
+    color: #475569;
+}
+
+.modal-box input {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 14px;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+}
+
+.modal-box input:focus {
+    outline: none;
+    border-color: #2563eb;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2563eb;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: #1e40af;
+}
+
+.footer-text {
+    text-align: center;
+    font-size: 14px;
+    margin-top: 18px;
+}
+
+.footer-text a {
+    color: #2563eb;
+    text-decoration: none;
+}

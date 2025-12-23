@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Login Modal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Overlay -->
+    <div class="modal-overlay show" id="modalLogin">
+        <div class="modal-box">
+            <span class="close-btn" onclick="closeModal()">×</span>
+            <h2>Masuk</h2>
+            <p class="subtitle">Silakan login ke akun Anda</p>
+
+            <form>
+                <label>Email</label>
+                <input type="email" placeholder="email@email.com" required>
+
+                <label>Password</label>
+                <input type="password" placeholder="********" required>
+
+                <button type="submit" class="submit-btn">Login</button>
+            </form>
+
+            <p class="footer-text">
+                Belum punya akun? <a href="#">Daftar</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function openModal() {
+            document.getElementById("modalLogin").classList.add("show");
+        }
+
+        function closeModal() {
+            window.location.href="../../index.html"
+        }
+    </script>
+</body>
+
+</html>

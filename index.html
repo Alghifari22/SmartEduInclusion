@@ -14,18 +14,18 @@
             <div class="nav-logo">SmartEduInclusion</div>
 
             <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#features">Features</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentangkami">Tentang Kami</a></li>
+                <li><a href="#fitur">Fitur</a></li>
+                <li><a href="#kontak">Kontak Kami</a></li>
             </ul>
 
-            <button class="nav-btn">Login</button>
+            <button class="nav-btn" id="btn-login">Login</button>
         </nav>
 
         <!-- Content -->
         <main>
-            <section class="hero-section" id="home">
+            <section class="hero-section" id="beranda">
                 <div class="content">
                     <div class="text">
                         <h1>Solusi Digital untuk Pembelajaran Inklusif</h1>
@@ -40,7 +40,7 @@
                 </div>
             </section>
 
-            <section class="about-section" id="about">
+            <section class="about-section" id="tentangkami">
                 <div class="content">
                     <div class="about-image">
                         <img src="assets/images/about-image.jpg" alt="About Image">
@@ -79,7 +79,7 @@
             </section>
 
             <!-- Features Section -->
-            <section class="features-section" id="features">
+            <section class="features-section" id="fitur">
                 <div class="features-header">
                     <h1>Fitur Utama SmartEdu</h1>
                     <p>Dirancang untuk mendukung pembelajaran inklusif secara menyeluruh, SmartEdu menyediakan fitur-fitur yang membantu sekolah, guru, dan orang tua bekerja lebih efektif.</p>
@@ -121,7 +121,7 @@
             </section>
 
             <!-- Contact Section -->
-            <section class="contact-section" id="contact">
+            <section class="contact-section" id="kontak">
                 <div class="contact-container">
                     <div class="contact-content">
                         <div class="contact-info">
@@ -225,5 +225,12 @@
             </footer>
         </main>
     </div>
+    <script>
+        const login = document.getElementById('btn-login');
+        login.addEventListener('click', function(){
+            window.location.href = "auth/login/index.html";
+        })
+
+    </script>
 </body>
 </html>

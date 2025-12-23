@@ -12,74 +12,111 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
-<body class="dashboard-body">
-    <aside class="sidebar">
-        <div class="sidebar-logo">SmartEduInclusion</div>
-        <nav class="sidebar-nav">
-            <a href="index.html" class="active">Dashboard</a>
-            <a href="../komunikasi/list.html">Komunikasi</a>
-            <a href="#">Perkembangan Anak</a>
-        </nav>
-        <button class="btn-logout">Logout</button>
-    </aside>
-
-    <main class="dashboard-content">
-        <header class="content-header">
-            <h2>Dashboard</h2>
-            <div class="user-info">
-                <div class="user-text">
-                    <span>alvi@email.com</span>
-                    <small>Orang Tua</small>
-                </div>
-                <i class="fa-solid fa-circle-user user-icon"></i>
-            </div>
-        </header>
-
-        <p>Nama Siswa: <strong>Alif</strong></p>
-
-        <div class="stats-grid">
-            <div class="card-stat behavior-card">
-                <h3>Skor Perilaku</h3>
-                <div class="score">A+</div>
-            </div>
-            <div class="card-stat graph-card">
-                <h3>Grafik Nilai</h3>
-                <div class="chart-box">
-                    <canvas id="myChart"></canvas>
-                </div>
-            </div>
+<body class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">SmartEduInclusion</div>
+            <div class="logo-subtitle">Student Portal</div>
         </div>
 
-        <section class="remedial-section">
-            <h3>Riwayat Remedial</h3>
-            <table class="remedial-table">
-                <thead>
-                    <tr>
-                        <th>Mata Pelajaran</th>
-                        <th>Awal</th>
-                        <th>Akhir</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Matematika</td>
-                        <td>65</td>
-                        <td>80</td>
-                        <td>Lulus</td>
-                    </tr>
-                    <tr>
-                        <td>Fisika</td>
-                        <td>60</td>
-                        <td>75</td>
-                        <td>Lulus</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active">
+                        <i class="fas fa-home"></i>
+                        Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="../komunikasi/list.html" class="nav-link">
+                        <i class="fas fa-comments"></i>
+                        Komunikasi
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-seedling"></i>
+                        Perkembangan Anak
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="sidebar-footer">
+            <button class="logout-btn" id="logout-btn">
+                <i class="fas fa-sign-out-alt"></i>
+                Logout
+            </button>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <h1 class="header-title">Dashboard</h1>
+            <div class="user-info">
+                <div class="user-details">
+                    <span class="user-name">Orang Tua</span>
+                    <span class="user-email">email@example.com</span>
+                </div>
+                <div class="user-avatar">
+                    OT
+                </div>
+            </div>
+        </header>
+        <div class="content-wrapper">
+            <p>Nama Siswa: <strong>Alif</strong></p>
+    
+            <div class="stats-grid">
+                <div class="card-stat behavior-card">
+                    <h3>Skor Perilaku</h3>
+                    <div class="score">A+</div>
+                </div>
+                <div class="card-stat graph-card">
+                    <h3>Grafik Nilai</h3>
+                    <div class="chart-box">
+                        <canvas id="myChart"></canvas>
+                    </div>
+                </div>
+            </div>
+    
+            <section class="remedial-section">
+                <h3>Riwayat Remedial</h3>
+                <table class="remedial-table">
+                    <thead>
+                        <tr>
+                            <th>Mata Pelajaran</th>
+                            <th>Awal</th>
+                            <th>Akhir</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Matematika</td>
+                            <td>65</td>
+                            <td>80</td>
+                            <td>Lulus</td>
+                        </tr>
+                        <tr>
+                            <td>Fisika</td>
+                            <td>60</td>
+                            <td>75</td>
+                            <td>Lulus</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
     </main>
 
     <script>
+        const btn = document.getElementById('logout-btn');
+        btn.addEventListener('click', function(){
+            window.location.href = "../../index.html";
+        });
+
         new Chart('myChart', {
             type: 'bar',
             data: {

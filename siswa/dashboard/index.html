@@ -41,7 +41,7 @@
             </nav>
 
             <div class="sidebar-footer">
-                <button class="logout-btn">
+                <button class="logout-btn" id="logout-btn">
                     <i class="fas fa-sign-out-alt"></i>
                     Logout
                 </button>
@@ -122,6 +122,12 @@
     </div>
 
     <script>
+        // Logout Function
+        const btn = document.getElementById('logout-btn');
+        btn.addEventListener('click', function(){
+            window.location.href = "../../index.html";
+        });
+
         // Data statis
         const latestActivity = {
             id: 1,
