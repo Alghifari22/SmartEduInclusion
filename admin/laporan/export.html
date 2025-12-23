@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Export Data - Admin</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../sidebar.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="dashboard-body">
+    <aside class="sidebar">
+        <div class="sidebar-logo">SmartEduInclusion</div>
+        <nav class="sidebar-nav">
+            <a href="#">Manajemen Pengguna</a>
+            <a href="#">Manajemen Data Sekolah</a>
+            <a href="index.html" class="active">Laporan Inklusif</a>
+        </nav>
+        <button class="btn-logout">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="content-header">
+            <h2>Export Laporan</h2>
+            <div class="user-info">
+                <div class="user-text">
+                    <span>admin@email.com</span>
+                    <small>Admin</small>
+                </div>
+                <div class="user-icon" style="color: #334155;">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="export-card">
+            <div class="export-icon">
+                <i class="fa-solid fa-file-arrow-down"></i>
+            </div>
+            <h3>Unduh Laporan Inklusif</h3>
+            <p style="color: #64748b; margin-bottom: 30px;">Pilih format dan periode data yang ingin Anda unduh.</p>
+
+            <form>
+                <div class="form-group">
+                    <label>Pilih Kelas</label>
+                    <select class="form-select">
+                        <option>Semua Kelas</option>
+                        <option>Kelas 10</option>
+                        <option>Kelas 11</option>
+                        <option>Kelas 12</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Periode Laporan</label>
+                    <input type="date" class="form-date">
+                </div>
+
+                <div class="form-group">
+                    <label>Format File</label>
+                    <select class="form-select">
+                        <option value="pdf">PDF Document (.pdf)</option>
+                        <option value="excel">Microsoft Excel (.xlsx)</option>
+                        <option value="csv">CSV (.csv)</option>
+                    </select>
+                </div>
+
+                <div class="btn-group">
+                    <button type="button" class="btn-outline" onclick="window.location.href='index.html'">Batal</button>
+                    <button type="button" class="btn-primary" onclick="alert('Laporan sedang diunduh...')">Download
+                        Sekarang</button>
+                </div>
+            </form>
+        </div>
+    </main>
+</body>
+
+</html>

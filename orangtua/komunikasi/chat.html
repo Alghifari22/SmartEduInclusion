@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Chat</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../sidebar.css">
+    <link rel="stylesheet" href="komunikasi.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="dashboard-body">
+    <aside class="sidebar">
+        <div class="sidebar-logo">SmartEduInclusion</div>
+        <nav class="sidebar-nav">
+            <a href="../dashboard/index.html">Dashboard</a>
+            <a href="list.html" class="active">Komunikasi</a>
+            <a href="#">Perkembangan Anak</a>
+        </nav>
+        <button class="btn-logout">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="content-header">
+            <h2>Komunikasi Guru-Orang Tua</h2>
+            <div class="user-info">
+                <div class="user-text">
+                    <span>alvi@email.com</span>
+                    <small>Orang Tua</small>
+                </div>
+                <i class="fa-solid fa-circle-user user-icon"></i>
+            </div>
+        </header>
+
+        <div class="chat-room-container">
+            <div class="room-header">
+                <div class="chat-avatar" style="width: 40px; height: 40px; margin: 0;">
+                    <i class="fa-solid fa-user"></i>
+                </div>
+                <div>
+                    <span class="chat-name">Ms. Liliana</span>
+                    <span class="teacher-role">Guru Fisika</span>
+                </div>
+            </div>
+
+            <div class="messages-area">
+                <div class="message-bubble msg-left">
+                    Selamat siang Ibu, saya ingin mengabarkan progres Alif.
+                </div>
+
+                <div class="message-bubble msg-left">
+                    Nilai tugas fisikanya minggu ini sangat memuaskan, dia dapat nilai 90.
+                </div>
+
+                <div class="message-bubble msg-right">
+                    Wah, alhamdulillah. Terima kasih informasinya Bu Liliana.
+                </div>
+            </div>
+
+            <div class="input-area">
+                <button class="btn-attach"><i class="fa-solid fa-paperclip"></i></button>
+                <input type="text" class="input-field" placeholder="Ketik Pesan Anda">
+                <button class="btn-send"><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

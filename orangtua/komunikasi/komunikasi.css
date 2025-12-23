@@ -1,0 +1,176 @@
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.user-text {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+}
+
+.user-icon {
+    font-size: 30px;
+    color: var(--primary);
+}
+
+.chat-list-container {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.chat-item {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    border-bottom: 1px solid var(--border);
+    text-decoration: none;
+    transition: 0.2s;
+    color: var(--primaryText);
+}
+
+.chat-item:hover {
+    background: #f8fafc;
+}
+
+.chat-item:last-child {
+    border-bottom: none;
+}
+
+.chat-avatar {
+    width: 50px;
+    height: 50px;
+    background: #e2e8f0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: var(--secondaryText);
+    margin-right: 15px;
+}
+
+.chat-info {
+    flex: 1;
+}
+
+.chat-name {
+    font-weight: 700;
+    font-size: 16px;
+    margin-bottom: 4px;
+    display: block;
+}
+
+.chat-preview {
+    font-size: 14px;
+    color: var(--secondaryText);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 80%;
+    display: block;
+}
+
+.chat-time {
+    font-size: 12px;
+    color: var(--secondaryText);
+}
+
+.chat-room-container {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+}
+
+.room-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+}
+
+.teacher-role {
+    font-size: 12px;
+    color: var(--secondaryText);
+    display: block;
+}
+
+.messages-area {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f8fafc;
+}
+
+.message-bubble {
+    max-width: 70%;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 14px;
+    line-height: 1.5;
+    position: relative;
+}
+
+.msg-left {
+    align-self: flex-start;
+    background: #e2e8f0;
+    color: var(--primaryText);
+    border-top-left-radius: 2px;
+}
+
+.msg-right {
+    align-self: flex-end;
+    background: #94a3b8;
+    color: white;
+    border-top-right-radius: 2px;
+}
+
+.input-area {
+    padding: 15px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: white;
+}
+
+.btn-attach {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--secondaryText);
+    cursor: pointer;
+}
+
+.input-field {
+    flex: 1;
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    outline: none;
+}
+
+.btn-send {
+    background: none;
+    border: none;
+    font-size: 20px;
+    color: var(--primary);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .chat-room-container {
+        height: calc(100vh - 150px);
+    }
+}
