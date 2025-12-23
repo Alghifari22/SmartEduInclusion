@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Orang Tua</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../sidebar.css">
+    <link rel="stylesheet" href="ortu.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body class="dashboard-body">
+    <aside class="sidebar">
+        <div class="sidebar-logo">SmartEduInclusion</div>
+        <nav class="sidebar-nav">
+            <a href="index.html" class="active">Dashboard</a>
+            <a href="../komunikasi/list.html">Komunikasi</a>
+            <a href="#">Perkembangan Anak</a>
+        </nav>
+        <button class="btn-logout">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="content-header">
+            <h2>Dashboard</h2>
+            <div class="user-info">
+                <div class="user-text">
+                    <span>alvi@email.com</span>
+                    <small>Orang Tua</small>
+                </div>
+                <i class="fa-solid fa-circle-user user-icon"></i>
+            </div>
+        </header>
+
+        <p>Nama Siswa: <strong>Alif</strong></p>
+
+        <div class="stats-grid">
+            <div class="card-stat behavior-card">
+                <h3>Skor Perilaku</h3>
+                <div class="score">A+</div>
+            </div>
+            <div class="card-stat graph-card">
+                <h3>Grafik Nilai</h3>
+                <div class="chart-box">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <section class="remedial-section">
+            <h3>Riwayat Remedial</h3>
+            <table class="remedial-table">
+                <thead>
+                    <tr>
+                        <th>Mata Pelajaran</th>
+                        <th>Awal</th>
+                        <th>Akhir</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Matematika</td>
+                        <td>65</td>
+                        <td>80</td>
+                        <td>Lulus</td>
+                    </tr>
+                    <tr>
+                        <td>Fisika</td>
+                        <td>60</td>
+                        <td>75</td>
+                        <td>Lulus</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <script>
+        new Chart('myChart', {
+            type: 'bar',
+            data: {
+                labels: ['Kimia', 'Matematika', 'Fisika', 'Biologi'],
+                datasets: [{
+                    label: 'Nilai',
+                    data: [88, 80, 75, 90],
+                    backgroundColor: '#2563EB',
+                }]
+            },
+            options: { maintainAspectRatio: false }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Inklusif Sekolah</title>
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="stylesheet" href="../sidebar.css">
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+
+<body class="dashboard-body">
+    <aside class="sidebar">
+        <div class="sidebar-logo">SmartEduInclusion</div>
+        <nav class="sidebar-nav">
+            <a href="#">Manajemen Pengguna</a>
+            <a href="#">Manajemen Data Sekolah</a>
+            <a href="index.html" class="active">Laporan Inklusif</a>
+        </nav>
+        <button class="btn-logout">Logout</button>
+    </aside>
+
+    <main class="dashboard-content">
+        <header class="content-header">
+            <h2>Laporan Inklusif Sekolah</h2>
+            <div class="user-info">
+                <div class="user-text">
+                    <span>admin@email.com</span>
+                    <small>Admin</small>
+                </div>
+                <div class="user-icon" style="color: #334155;">
+                    <i class="fa-solid fa-user-gear"></i>
+                </div>
+            </div>
+        </header>
+
+        <div class="toolbar-container">
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass" style="color: #94a3b8;"></i>
+                <input type="text" placeholder="Cari Data Siswa...">
+            </div>
+            <div class="action-buttons">
+                <a href="#" class="btn-dark">Tambah</a>
+                <a href="export.html" class="btn-dark">Export</a>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table class="admin-table">
+                <thead>
+                    <tr>
+                        <th width="50px">No</th>
+                        <th>Nama Siswa</th>
+                        <th>Kelas</th>
+                        <th>Kebutuhan Khusus</th>
+                        <th>Status Laporan</th>
+                        <th width="120px">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Alif Firmansyah</td>
+                        <td>10 IPA 1</td>
+                        <td>Autisme Ringan</td>
+                        <td><span style="color: green; font-weight:600;">Lengkap</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-circle-info"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Budi Kurniawan</td>
+                        <td>11 IPS 2</td>
+                        <td>ADHD</td>
+                        <td><span style="color: orange; font-weight:600;">Pending</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-circle-info"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Siti Aminah</td>
+                        <td>10 IPA 3</td>
+                        <td>Disleksia</td>
+                        <td><span style="color: green; font-weight:600;">Lengkap</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-circle-info"></i>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>Reza Rahadian</td>
+                        <td>12 Bahasa</td>
+                        <td>Tunarungu</td>
+                        <td><span style="color: red; font-weight:600;">Belum Ada</span></td>
+                        <td>
+                            <div class="action-icons">
+                                <i class="fa-solid fa-pen"></i>
+                                <i class="fa-solid fa-trash"></i>
+                                <i class="fa-solid fa-circle-info"></i>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="pagination-container">
+                <span>Halaman 1 dari 5 Halaman</span>
+                <div class="page-numbers">
+                    <a href="#" class="page-btn active">1</a>
+                    <a href="#" class="page-btn">2</a>
+                    <a href="#" class="page-btn">3</a>
+                    <a href="#" class="page-btn">4</a>
+                    <a href="#" class="page-btn">5</a>
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
